@@ -67,9 +67,9 @@ public class Main {
         System.out.println("The average of the elements is: " + avg);
     }
     public static void task3(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Enter a number:");
-        int n = scanner.nextInt();
+        int n = sc.nextInt();
         if (Problem3.isPrime(n)) {
             System.out.println("Prime");
         } else {
@@ -77,7 +77,11 @@ public class Main {
         }
     }
     public static void task4(){
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number:");
+        int n = sc.nextInt();
+        long ans = Problem4.findFactorial(n);
+        System.out.println(ans);
     }
     public static void task5(){
 
