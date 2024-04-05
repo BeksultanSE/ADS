@@ -67,7 +67,14 @@ public class Main {
         System.out.println("The average of the elements is: " + avg);
     }
     public static void task3(){
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a number:");
+        int n = scanner.nextInt();
+        if (Problem3.isPrime(n)) {
+            System.out.println("Prime");
+        } else {
+            System.out.println("Composite");
+        }
     }
     public static void task4(){
 
