@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -9,42 +8,57 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the task number (1-10) or 0 to exit");
+        System.out.println("Enter the task number (1-10) or 0 to exit (11 is defence task)");
         int task = sc.nextInt();
         switch (task) {
             case 1:
-                task1();
+                timeTaken(Main::task1);
                 break;
             case 2:
-                task2();
+                timeTaken(Main::task2);
                 break;
             case 3:
-                task3();
+                timeTaken(Main::task3);
                 break;
             case 4:
-                task4();
+                timeTaken(Main::task4);
                 break;
             case 5:
-                task5();
+                timeTaken(Main::task5);
                 break;
             case 6:
-                task6();
+                timeTaken(Main::task6);
                 break;
             case 7:
-                task7();
+                timeTaken(Main::task7);
                 break;
             case 8:
-                task8();
+                timeTaken(Main::task8);
                 break;
             case 9:
-                task9();
+                timeTaken(Main::task9);
                 break;
             case 10:
-                task10();
+                timeTaken(Main::task10);
+                break;
+            case 11:
+                timeTaken(Main::task11);
                 break;
         }
         System.out.println("Program is finished!");
         sc.close();
+    }
+    /*
+    * This method calculates the time taken for compilation of the task.
+    *
+    * @param task The method of the task to be calculated
+    * */
+    public static void timeTaken(Runnable task){
+        double startTime = System.nanoTime();
+        task.run();
+        double endTime = System.nanoTime();
+        double duration = (endTime - startTime) / 1000000; //Convert nanoseconds to milliseconds
+        System.out.println("Time taken: " + duration + " milliseconds");
     }
     /*
      * Task 1: Read array size and elements, then find minimum value
@@ -167,4 +181,15 @@ public class Main {
         System.out.println(Problem10.findGCD(a, b));
     }
 
+
+
+    public static void task11(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the string: ");
+        String s = sc.next();
+        System.out.println("Enter the char: ");
+        char letter = sc.next().charAt(0);
+        int result = Defense1.countOccurrences(s, letter);
+        System.out.println(result);
+    }
 }
