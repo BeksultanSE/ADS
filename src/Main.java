@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        MyList<Integer> list = new MyArrayList<Integer>();
+        MyList<Integer> list = new MyLinkedList<>();
         list.add(4);
         list.add(1);
         list.add(3);
