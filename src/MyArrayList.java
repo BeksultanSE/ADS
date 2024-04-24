@@ -8,7 +8,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
         size = 0;
     }
     private void increaseBuffer(){
-        T[] newArr = (T[]) new Object[arr.length * 2];
+        T[] newArr = (T[]) new Comparable[arr.length * 2];
         for (int i = 0; i < arr.length; i++){
             newArr[i] = arr[i];
         }
