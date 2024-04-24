@@ -1,17 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        MyMinHeap minHeap = new MyMinHeap();
-        minHeap.insert(5);
-        minHeap.insert(3);
-        minHeap.insert(17);
-        minHeap.insert(10);
-        minHeap.insert(84);
-        minHeap.insert(19);
-        minHeap.insert(6);
-        minHeap.insert(22);
-        minHeap.insert(9);
-        System.out.println(minHeap.extractMin());
-        minHeap.print();
+        MyQueue<Integer> queue = new MyQueue<>();
+        queue.enqueue(12);
+        queue.enqueue(3);
+        queue.enqueue(14);
+
+        System.out.println(queue.size());
+        queue.dequeue();
+        queue.dequeue();
+        System.out.println(queue.peek());
 
     }
 

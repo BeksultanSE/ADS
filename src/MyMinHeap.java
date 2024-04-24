@@ -37,7 +37,7 @@ public class MyMinHeap {
             return Integer.MIN_VALUE;
         }
         int popped = getMin();
-        swap(1, heap.size() - 1);
+        swap(1, size());
         heap.removeLast();
         heapify(1);
         return popped;
@@ -45,12 +45,11 @@ public class MyMinHeap {
 
     public void insert(int item){
         heap.addLast(item);
-        traverseUp(heap.size() - 1);
+        traverseUp(size());
     }
 
     private void heapify(int index){
         if (leftChildOf(index) != Integer.MIN_VALUE && rightChildOf(index) != Integer.MIN_VALUE) {
-            System.out.println("L and R " + leftChildOf(index) + ' ' + rightChildOf(index));
             if (rightChildOf(index) == Integer.MIN_VALUE || (heap.get(leftChildOf(index)) <= heap.get(rightChildOf(index)))) {
                 swap(leftChildOf(index), index);
                 heapify(leftChildOf(index));
@@ -70,14 +69,14 @@ public class MyMinHeap {
     }
 
     private int leftChildOf(int index) {
-        if (index * 2 > heap.size() - 1){
+        if (index * 2 > size()){
             return Integer.MIN_VALUE;
         }
         return index * 2;
     }
 
     private int rightChildOf(int index){
-        if (index * 2 + 1 > heap.size() - 1){
+        if (index * 2 + 1 > size()){
             return Integer.MIN_VALUE;
         }
         return index * 2 + 1;
