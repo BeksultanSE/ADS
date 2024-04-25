@@ -1,17 +1,25 @@
 import java.util.Iterator;
 
 public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
+    // The head node of the linked list
     private MyNode<E> head;
+    // The tail node of the linked list
     private MyNode<E> tail;
+    // The number of items in the linked list
     private int size;
+
+    // Constructs a new, empty MyLinkedList object
     public MyLinkedList(){
 
     }
+
+    // Adds an item to the end of the list
     @Override
     public void add(E item) {
         addLast(item);
     }
 
+    // Sets the item at the given index to the specified value
     @Override
     public void set(int index, E item) {
         checkIndex(index);
@@ -19,6 +27,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         current.data = item;
     }
 
+    // Inserts an item at the specified index
     @Override
     public void add(int index, E item) {
         if(index == 0){
@@ -43,6 +52,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         }
     }
 
+    // Adds an item to the beginning of the list
     @Override
     public void addFirst(E item) {
         MyNode<E> newNode = new MyNode<>(item);
@@ -57,6 +67,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size++;
     }
 
+    // Adds an item to the end of the list
     @Override
     public void addLast(E item) {
         MyNode<E> newNode = new MyNode<>(item);
@@ -72,6 +83,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size++;
     }
 
+    // Returns the item at the specified index
     @Override
     public E get(int index) {
         checkIndex(index);
@@ -79,16 +91,19 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return current != null ? current.data : null;
     }
 
+    // Returns the first item in the list
     @Override
     public E getFirst() {
         return head != null ? head.data : null;
     }
 
+    // Returns the last item in the list
     @Override
     public E getLast() {
         return tail != null ? tail.data : null;
     }
 
+    // Removes the item at the specified index
     @Override
     public void remove(int index) {
         checkIndex(index);
@@ -106,16 +121,19 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size--;
     }
 
+    // Removes the first item in the list
     @Override
     public void removeFirst() {
         remove(0);
     }
 
+    // Removes the last item in the list
     @Override
     public void removeLast() {
         remove(size - 1);
     }
 
+    // Sorts the list using a bubble sort algorithm
     @Override
     public void sort() {
         boolean swapped;
@@ -134,6 +152,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         } while (swapped);
     }
 
+    // Returns the index of the first occurrence of the specified object
     @Override
     public int indexOf(Object object) {
         MyNode<E> current = head;
@@ -148,6 +167,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return -1;
     }
 
+    // Returns the index of the last occurrence of the specified object
     @Override
     public int lastIndexOf(Object object) {
         MyNode<E> current = tail;
@@ -162,11 +182,13 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return -1;
     }
 
+    // Returns true if the specified object is in the list, and false otherwise
     @Override
     public boolean exists(Object object) {
         return indexOf(object) != -1;
     }
 
+    // Returns an array containing all of the items in the list
     @Override
     public Object[] toArray() {
         Object[] array = new Object[size];
@@ -178,6 +200,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return array;
     }
 
+    // Clears the list, removing all items
     @Override
     public void clear() {
         head = null;
@@ -185,20 +208,25 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size = 0;
     }
 
+    // Returns the number of items in the list
     @Override
     public int size() {
         return size;
     }
 
+    // Returns an iterator for the list
     @Override
     public Iterator<E> iterator() {
         return new MyLinkedListIterator<>();
     }
 
+    // Throws an IndexOutOfBoundsException if the given index is out of bounds
     private void checkIndex(int index) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException("index not correct");
     }
+
+    // Returns the node at the specified index
     private MyNode<E> getNode(int index) {
         if (index >= 0 && index < size) {
             MyNode<E> current;
@@ -218,22 +246,34 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
             return null;
         }
     }
+
+    // A private inner class that represents a node in the linked list
     private static class MyNode<E>{
+        // The data stored in the node
         E data;
+        // The next node in the linked list
         MyNode<E> next;
+        // The previous node in the linked list
         MyNode<E> prev;
+
+        // Constructs a new MyNode object with the given data
         MyNode(E data){
             this.data = data;
         }
     }
+
+    // A private inner class that implements the Iterator interface
     private class MyLinkedListIterator<E> implements Iterator<E>{
+        // The current node in the iteration
         private MyNode<E> current;
 
+        // Returns true if there are more items to iterate over, and false otherwise
         @Override
         public boolean hasNext() {
             return current.next != null;
         }
 
+        //Returns the next item in the iteration
         @Override
         public E next() {
             if(!hasNext()){

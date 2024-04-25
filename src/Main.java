@@ -6,6 +6,7 @@ public class Main {
         stack.push(8);
         System.out.println(stack.pop());
         System.out.println(stack.peek());
+
     }
 
 }
