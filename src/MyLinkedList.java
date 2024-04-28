@@ -8,18 +8,35 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
     // The number of items in the linked list
     private int size;
 
-    // Constructs a new, empty MyLinkedList object
+    /**
+     * Constructs a new, empty MyLinkedList object.
+     * 
+     * Time complexity: O(1) - initializes the head, tail, and size variables.
+     */
     public MyLinkedList(){
 
     }
 
-    // Adds an item to the end of the list
+    /**
+     * Adds an item to the end of the list.
+     * 
+     * Time complexity: O(1) - adds the item to the end of the list.
+     * 
+     * @param item The item to add.
+     */
     @Override
     public void add(E item) {
         addLast(item);
     }
 
-    // Sets the item at the given index to the specified value
+    /**
+     * Sets the item at the given index to the specified value.
+     * 
+     * Time complexity: O(n) - finds the node at the specified index and updates its data.
+     * 
+     * @param index The index to set.
+     * @param item The item to set.
+     */
     @Override
     public void set(int index, E item) {
         checkIndex(index);
@@ -27,7 +44,14 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         current.data = item;
     }
 
-    // Inserts an item at the specified index
+    /**
+     * Inserts an item at the specified index.
+     * 
+     * Time complexity: O(n) - finds the node at the specified index and inserts a new node.
+     * 
+     * @param index The index to insert at.
+     * @param item The item to insert.
+     */
     @Override
     public void add(int index, E item) {
         if(index == 0){
@@ -43,7 +67,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
             newNode.next = prev.next;
             prev.next = newNode;
             newNode.prev = prev;
-            if (newNode.next != null) {
+            if (newNode.next!= null) {
                 newNode.next.prev = newNode;
             } else {
                 tail = newNode;
@@ -52,7 +76,13 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         }
     }
 
-    // Adds an item to the beginning of the list
+    /**
+     * Adds an item to the beginning of the list.
+     * 
+     * Time complexity: O(1) - adds the item to the beginning of the list.
+     * 
+     * @param item The item to add.
+     */
     @Override
     public void addFirst(E item) {
         MyNode<E> newNode = new MyNode<>(item);
@@ -67,7 +97,13 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size++;
     }
 
-    // Adds an item to the end of the list
+    /**
+     * Adds an item to the end of the list.
+     * 
+     * Time complexity: O(1) - adds the item to the end of the list.
+     * 
+     * @param item The item to add.
+     */
     @Override
     public void addLast(E item) {
         MyNode<E> newNode = new MyNode<>(item);
@@ -83,27 +119,52 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size++;
     }
 
-    // Returns the item at the specified index
+    /**
+     * Returns the item at the specified index.
+     * 
+     * Time complexity: O(n) - finds the node at the specified index and returns its data.
+     * 
+     * @param index The index to retrieve.
+     * @return The item at the specified index.
+     */
     @Override
     public E get(int index) {
         checkIndex(index);
         MyNode<E> current = getNode(index);
-        return current != null ? current.data : null;
+        return current!= null? current.data : null;
     }
 
-    // Returns the first item in the list
+    /**
+     * Returns the first item in the list.
+     * 
+     * Time complexity: O(1) - returns the first item in the list.
+     * 
+     * @return The first item in the list.
+     */
     @Override
     public E getFirst() {
-        return head != null ? head.data : null;
+        return head!= null? head.data : null;
     }
 
-    // Returns the last item in the list
+    /**
+     * Returns the last item in the list.
+     * 
+     * Time complexity: O(1) - returns the last item in the list.
+     * 
+     * @return The last item in the list.
+     */
     @Override
     public E getLast() {
-        return tail != null ? tail.data : null;
+        return tail!= null? tail.data : null;
     }
 
-    // Removes the item at the specified index
+    /**
+     * Removes the item at the specified index.
+     * 
+     * Time complexity: O(n) - finds the node at the specifiedindex and removes it.
+     * 
+     * @param index The index to remove.
+     */
     @Override
     public void remove(int index) {
         checkIndex(index);
@@ -121,19 +182,34 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size--;
     }
 
-    // Removes the first item in the list
+    /**
+     * Removes the first item in the list.
+     * 
+     * Time complexity: O(1) - removes the first item in the list.
+     * 
+     */
     @Override
     public void removeFirst() {
         remove(0);
     }
 
-    // Removes the last item in the list
+    /**
+     * Removes the last item in the list.
+     * 
+     * Time complexity: O(1) - removes the last item in the list.
+     * 
+     */
     @Override
     public void removeLast() {
         remove(size - 1);
     }
 
-    // Sorts the list using a bubble sort algorithm
+    /**
+     * Sorts the list using a bubble sort algorithm.
+     * 
+     * Time complexity: O(n^2) - where n is the size of the list.
+     * 
+     */
     @Override
     public void sort() {
         boolean swapped;
@@ -152,7 +228,14 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         } while (swapped);
     }
 
-    // Returns the index of the first occurrence of the specified object
+    /**
+     * Returns the index of the first occurrence of the specified object.
+     * 
+     * Time complexity: O(n) - where n is the size of the list.
+     * 
+     * @param object The object to search for.
+     * @return The index of the first occurrence of the specified object, or -1 if not found.
+     */
     @Override
     public int indexOf(Object object) {
         MyNode<E> current = head;
@@ -167,7 +250,14 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return -1;
     }
 
-    // Returns the index of the last occurrence of the specified object
+    /**
+     * Returns the index of the last occurrence of the specified object.
+     * 
+     * Time complexity: O(n) - where n is the size of the list.
+     * 
+     * @param object The object to search for.
+     * @return The index of the last occurrence of the specified object, or -1 if not found.
+     */
     @Override
     public int lastIndexOf(Object object) {
         MyNode<E> current = tail;
@@ -182,16 +272,29 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return -1;
     }
 
-    // Returns true if the specified object is in the list, and false otherwise
+    /**
+     * Returns true if the specified object is in the list, and false otherwise.
+     * 
+     * Time complexity: O(n) - where n is the size of the list.
+     * 
+     * @param object The object to search for.
+     * @return True if the specified object is in the list, and false otherwise.
+     */
     @Override
     public boolean exists(Object object) {
         return indexOf(object) != -1;
     }
 
-    // Returns an array containing all of the items in the list
+    /**
+     * Returns an array containing all of the items in the list.
+     * 
+     * Time complexity: O(n) - where n is the size of the list.
+     * 
+     * @return An array containing all of the items in the list.
+     */
     @Override
     public Object[] toArray() {
-        Object[] array = new Object[size];
+       Object[] array = new Object[size];
         MyNode<E> current = head;
         for (int i = 0; i < size; i++) {
             array[i] = current.data;
@@ -200,7 +303,12 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         return array;
     }
 
-    // Clears the list, removing all items
+    /**
+     * Clears the list, removing all items.
+     * 
+     * Time complexity: O(1) - resets the head, tail, and size variables.
+     * 
+     */
     @Override
     public void clear() {
         head = null;
@@ -208,25 +316,50 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size = 0;
     }
 
-    // Returns the number of items in the list
+    /**
+     * Returns the number of items in the list.
+     * 
+     * Time complexity: O(1) - returns the size variable.
+     * 
+     * @return The number of items in the list.
+     */
     @Override
     public int size() {
         return size;
     }
 
-    // Returns an iterator for the list
+    /**
+     * Returns an iterator for the list.
+     * 
+     * Time complexity: O(1) - returns a new iterator object.
+     * 
+     * @return An iterator for the list.
+     */
     @Override
     public Iterator<E> iterator() {
         return new MyLinkedListIterator<>();
     }
 
-    // Throws an IndexOutOfBoundsException if the given index is out of bounds
+    /**
+     * Throws an IndexOutOfBoundsException if the given index is out of bounds
+     * 
+     * Time complexity: O(1) - checks if the index is within bounds.
+     * 
+     * @param index The index to check.
+     */
     private void checkIndex(int index) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException("index not correct");
     }
 
-    // Returns the node at the specified index
+    /**
+     * Returns the node at the specified index.
+     * 
+     * Time complexity: O(n) - where n is the size of the list.
+     * 
+     * @param index The index to retrieve.
+     * @return The node at the specified index.
+     */
     private MyNode<E> getNode(int index) {
         if (index >= 0 && index < size) {
             MyNode<E> current;
@@ -247,7 +380,13 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         }
     }
 
-    // A private inner class that represents a node in the linked list
+    /**
+     * A private inner class that represents a node in the linked list.
+     * 
+     * Time complexity: O(1) - initializes the data, next, and prev variables.
+     * 
+     * @param <E> The type of data stored in the node.
+     */
     private static class MyNode<E>{
         // The data stored in the node
         E data;
@@ -256,24 +395,48 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         // The previous node in the linked list
         MyNode<E> prev;
 
-        // Constructs a new MyNode object with the given data
+        /**
+         * Constructs a new MyNode object with the given data.
+         * 
+         * Time complexity: O(1) - initializes the data, next, and prev variables.
+         * 
+         * @param data The data to store in the node.
+         */
         MyNode(E data){
             this.data = data;
         }
     }
 
-    // A private inner class that implements the Iterator interface
+    /**
+     * A private inner class that implements the Iterator interface.
+     * 
+     * Time complexity: O(1) - initializes the current variable.
+     * 
+     * @param <E> The type of data stored in the linked list.
+     */
     private class MyLinkedListIterator<E> implements Iterator<E>{
         // The current node in the iteration
         private MyNode<E> current;
 
-        // Returns true if there are more items to iterate over, and false otherwise
+        /**
+         * Returns true if there are more items to iterate over, and false otherwise.
+         * 
+         * Time complexity: O(1) - checks if the current.next is not null.
+         * 
+         * @return True if there are more items to iterate over, andfalse otherwise.
+         */
         @Override
         public boolean hasNext() {
             return current.next != null;
         }
 
-        //Returns the next item in the iteration
+        /**
+         * Returns the next item in the iteration.
+         * 
+         * Time complexity: O(1) - returns the current.data and moves the current to the next node.
+         * 
+         * @return The next item in the iteration.
+         */
         @Override
         public E next() {
             if(!hasNext()){
