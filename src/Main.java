@@ -7,6 +7,18 @@ public class Main {
         testHashMap();
 
     }
+    public static void testBST(){
+        BST<Integer, String> tree = new BST<>();
+        tree.put(1, "Iliyas");
+        tree.put(3, "Adlet");
+        tree.put(4, "Dimash");
+        tree.put(2, "Bekzat");
+        for (var elem : tree) {
+
+            System.out.println("key is " + elem.getKey() + " and value is " + elem.getValue());
+
+        }
+    }
     public static void testHashMap(){
         MyHashTable<MyTestingClass, Student> table = new MyHashTable<MyTestingClass, Student>();
         Random random = new Random();
