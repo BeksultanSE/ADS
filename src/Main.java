@@ -5,7 +5,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         testHashMap();
-
+        testBST();
     }
     public static void testBST(){
         BST<Integer, String> tree = new BST<>();
@@ -13,7 +13,7 @@ public class Main {
         tree.put(3, "Adlet");
         tree.put(4, "Dimash");
         tree.put(2, "Bekzat");
-        for (var elem : tree) {
+        for (BST.Node elem : tree) {
 
             System.out.println("key is " + elem.getKey() + " and value is " + elem.getValue());
 
